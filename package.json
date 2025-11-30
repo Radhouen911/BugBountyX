@@ -1,0 +1,41 @@
+{
+  "name": "bug-bounty-platform",
+  "version": "1.0.0",
+  "description": "A complete bug bounty platform for local development",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch --detectOpenHandles",
+    "seed": "node scripts/seed.js",
+    "setup": "node scripts/setup.js",
+    "start-dev": "node scripts/start-dev.js",
+    "mongo": "mongod --dbpath ./data/db --port 27017",
+    "check-mongo": "node -e \"require('mongoose').connect('mongodb://localhost:27017/test').then(() => {console.log('✅ MongoDB is running'); process.exit(0)}).catch(() => {console.log('❌ MongoDB is not running'); process.exit(1)})\""
+  },
+  "keywords": ["bug-bounty", "security", "vulnerability", "express", "mongodb", "nodejs"],
+  "author": "Bug Bounty Platform",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.10.0",
+    "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": ["**/*.js", "!node_modules/**", "!coverage/**", "!jest.config.js"]
+  }
+}
